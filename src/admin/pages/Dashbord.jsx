@@ -1,68 +1,174 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-function Dashboard() {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Product 1", price: "$100", category: "Category A" },
-    { id: 2, name: "Product 2", price: "$200", category: "Category B" },
-    { id: 3, name: "Product 3", price: "$300", category: "Category C" },
-  ]);
+const Dashboard = () => {
+  const [activeTab, setActiveTab] = useState('products');
+  const [productData, setProductData] = useState({
+    name: '',
+    price: '',
+    description: '',
+    image: null,
+  });
+  const [imagePreview, setImagePreview] = useState(null);
 
-  const addProduct = () => {
-    const newProduct = {
-      id: products.length + 1,
-      name: `Product ${products.length + 1}`,
-      price: `$${(products.length + 1) * 100}`,
-      category: `Category ${String.fromCharCode(65 + products.length)}`,
-    };
-    setProducts([...products, newProduct]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProductData({ ...productData, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProductData({ ...productData, image: file });
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Product updated successfully!');
   };
 
   return (
-    <div className="dashboard">
-      <aside className="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-          <li>Dashboard</li>
-          <li>Products</li>
-          <li>Orders</li>
-          <li>Users</li>
-          <li>Settings</li>
-        </ul>
-      </aside>
+    <div className="min-h-screen flex flex-col bg-gray-100">
 
-      <div className="main">
-        <header className="header">
-          <h1>Admin Dashboard</h1>
-        </header>
+      {/* Main Content Section */}
+      <div className="flex flex-1">
+        
+        {/* Sidebar */}
+        <div className="w-1/4 bg-gray-900 text-white p-6">
+          <h2 className="text-2xl font-bold mb-8">Admin Dashboard</h2>
+          <div className="space-y-4">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'dashboard' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab('products')}
+              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'products' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
+            >
+              Products
+            </button>
+            <button
+              onClick={() => setActiveTab('settings')}
+              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'settings' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
+            >
+              Settings
+            </button>
+          </div>
+        </div>
 
-        <div className="content">
-          <button onClick={addProduct} className="add-button">
-            Add Product
-          </button>
-          <table className="product-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Category</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.category}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* Main Content - Right Side */}
+        <div className="flex-1 p-6">
+          {/* Tab Content - Product Edit Form */}
+          {activeTab === 'products' && (
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-4">Edit Product</h2>
+              <form onSubmit={handleSubmit}>
+                {/* Product Name */}
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold" htmlFor="name">
+                    Product Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={productData.name}
+                    onChange={handleInputChange}
+                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter product name"
+                    required
+                  />
+                </div>
+
+                {/* Product Price */}
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold" htmlFor="price">
+                    Product Price
+                  </label>
+                  <input
+                    type="number"
+                    name="price"
+                    id="price"
+                    value={productData.price}
+                    onChange={handleInputChange}
+                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter product price"
+                    required
+                  />
+                </div>
+
+                {/* Product Description */}
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold" htmlFor="description">
+                    Product Description
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    value={productData.description}
+                    onChange={handleInputChange}
+                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter product description"
+                    rows="4"
+                    required
+                  />
+                </div>
+
+                {/* Product Image */}
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold" htmlFor="image">
+                    Product Image
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                  {imagePreview && (
+                    <div className="mt-4">
+                      <img src={imagePreview} alt="Image Preview" className="w-32 h-32 object-cover rounded-lg" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Submit Button */}
+                <div className="mb-4">
+                  <button
+                    type="submit"
+                    className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    Update Product
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {/* Tab Content - Other Tabs */}
+          {activeTab === 'dashboard' && (
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-4">Dashboard</h2>
+              <p>Welcome to the admin dashboard. You can manage products, orders, and settings from here.</p>
+            </div>
+          )}
+          {activeTab === 'settings' && (
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-4">Settings</h2>
+              <p>Manage your settings here, including account information, site preferences, etc.</p>
+            </div>
+          )}
         </div>
       </div>
+
     </div>
   );
-}
+};
 
 export default Dashboard;
