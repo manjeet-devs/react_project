@@ -5,6 +5,7 @@ import './style/styleSheet.css'
 import Footer from "./components/Footer";
 import routes from "../routes/route";
 
+console.log(routes);
 
 function FrontApp(){
     return (
