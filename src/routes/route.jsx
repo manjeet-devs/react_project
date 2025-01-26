@@ -5,9 +5,10 @@ import ServicesPage from "../front/pages/ServicesPage";
 
 const routes = [
     { path: "/", element: <HomePage /> },
-    { path: "/about", element: <AboutPage /> },
-    { path: "*", element: <NotFoundPage /> },
     { path: "/services", element: <ServicesPage /> },
+    { path: "/about", element: <AboutPage /> },
+    { path: "/product/:id", element: <AboutPage /> },
+    { path: "*", element: <NotFoundPage /> },
   ];
 
 export default routes;

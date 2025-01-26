@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/SideBar';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('products');
@@ -30,14 +29,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <>
 
-      {/* Main Content Section */}
-      <div className="flex flex-1">
-        <Sidebar />
-        {/* Main Content - Right Side */}
         <div className="flex-1 p-6">
-          {/* Tab Content - Product Edit Form */}
           {activeTab === 'products' && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-4">Edit Product</h2>
@@ -141,9 +135,7 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-      </div>
-
-    </div>
+      </>
   );
 };
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Optional if using React Router
+import { Link } from 'react-router-dom'; // Optional if using React Router
 
 const SideBar = () => {
   const menuItems = [
-    { name: 'Dashboard', icon: '🏠', path: '/' },
-    { name: 'Products', icon: '📦', path: '/products' },
-    { name: 'Orders', icon: '🛒', path: '/orders' },
-    { name: 'Users', icon: '👤', path: '/users' },
-    { name: 'Settings', icon: '⚙️', path: '/settings' },
+    { name: 'Dashboard', icon: '🏠', path: '/admin' },
+    { name: 'Products', icon: '📦', path: '/admin/products' },
+    { name: 'Orders', icon: '🛒', path: '/admin/orders' },
+    { name: 'Users', icon: '👤', path: '/admin/user' },
+    { name: 'Settings', icon: '⚙️', path: '/admin/settings' },
   ];
 
   return (
@@ -19,7 +19,7 @@ const SideBar = () => {
         <ul className="space-y-2">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <NavLink
+              <Link
                 to={item.path}
                 className={({ isActive }) =>
                   `flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg ${
@@ -29,7 +29,7 @@ const SideBar = () => {
               >
                 <span className="text-lg">{item.icon}</span>
                 <span>{item.name}</span>
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
