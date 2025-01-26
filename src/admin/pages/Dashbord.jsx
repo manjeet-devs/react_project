@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Sidebar from '../components/SideBar';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('products');
@@ -33,32 +34,7 @@ const Dashboard = () => {
 
       {/* Main Content Section */}
       <div className="flex flex-1">
-        
-        {/* Sidebar */}
-        <div className="w-1/4 bg-gray-900 text-white p-6">
-          <h2 className="text-2xl font-bold mb-8">Admin Dashboard</h2>
-          <div className="space-y-4">
-            <button
-              onClick={() => setActiveTab('dashboard')}
-              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'dashboard' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={() => setActiveTab('products')}
-              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'products' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
-            >
-              Products
-            </button>
-            <button
-              onClick={() => setActiveTab('settings')}
-              className={`w-full text-left py-2 px-4 rounded-lg focus:outline-none ${activeTab === 'settings' ? 'bg-blue-600' : 'bg-gray-800 hover:bg-gray-700'}`}
-            >
-              Settings
-            </button>
-          </div>
-        </div>
-
+        <Sidebar />
         {/* Main Content - Right Side */}
         <div className="flex-1 p-6">
           {/* Tab Content - Product Edit Form */}
