@@ -1,3 +1,4 @@
+@import "tailwindcss";
 /* General Layout */
 .dashboard {
     display: flex;
@@ -86,4 +87,5 @@
   .product-table th {
     background-color: #f4f4f4;
   }
+
   

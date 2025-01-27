@@ -2,30 +2,29 @@ import HomePage from "../front/pages/HomePage";
 import AboutPage from "../front/pages/AboutPage";
 import NotFoundPage from "../front/pages/NotFoundPage";
 import ServicesPage from "../front/pages/ServicesPage";
-
-const path = window.location.pathname.replace(/^\//, "");
-console.log("Current path:", path);
+// import ProductPage from "../front/pages/ProductPage";
+import { Navigate } from "react-router-dom";
 
 const seo = [
-  { route: "/product/:id", url: "new-page" },
-  { route: "/product/3", url: "new-page1" },
-  { route: "/product/4", url: "new-page2" },
+  { route: "/product/3", url: "/new-page1" },
+  { route: "/product/4", url: "/new-page2" },
 ];
-
-let product_url = null;
-
-seo.forEach((item) => {
-  if (item.url === path) {
-    product_url = item.route;
-  }
-});
 
 const routes = [
   { path: "/", element: <HomePage /> },
   { path: "/services", element: <ServicesPage /> },
   { path: "/about", element: <AboutPage /> },
-  { path: `${product_url}`, element: <AboutPage /> }, 
+  { path: "/product/:id", element: <AboutPage /> }, // Dynamic route
   { path: "*", element: <NotFoundPage /> },
 ];
+
+// Add redirects for SEO-friendly URLs
+seo.forEach((item) => {
+  routes.push({
+    path: item.url,
+    element: <Navigate to={item.route} />,
+  });
+});
+console.log(routes);
 
 export default routes;
