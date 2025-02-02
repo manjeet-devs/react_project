@@ -2,6 +2,7 @@ import HomePage from "../front/pages/HomePage";
 import AboutPage from "../front/pages/AboutPage";
 import NotFoundPage from "../front/pages/NotFoundPage";
 import ServicesPage from "../front/pages/ServicesPage";
+import Product from "../front/pages/Product";
 
 const path = window.location.pathname.replace(/^\//, "");
 console.log("Current path:", path);
@@ -24,8 +25,11 @@ const routes = [
   { path: "/", element: <HomePage /> },
   { path: "/services", element: <ServicesPage /> },
   { path: "/about", element: <AboutPage /> },
-  { path: `${product_url}`, element: <AboutPage /> },
-  { path: "/product/:id", element: <HomePage /> }, // Dynamic route 
+  { path: `${product_url}`, element: <Product /> },
+  { path: "/product/:id", element: <Product /> }, 
+  // { path: "/service", element: <HomePage /> }, // Dynamic route 
+  
+  // Dynamic route 
   { path: "*", element: <NotFoundPage /> },
 ];
 
