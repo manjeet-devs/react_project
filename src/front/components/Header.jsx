@@ -9,7 +9,7 @@ function Header(){
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img src="/path-to-your-logo.png" alt="Logo" className="h-8 w-auto" />
-          <h1 className="text-2xl font-semibold">My Website</h1>
+          <Link to="/" className="hover:text-gray-400"><h1 className="text-2xl font-semibold">My Website</h1></Link>
         </div>
 
         {/* Search Bar */}
