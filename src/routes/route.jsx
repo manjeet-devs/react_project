@@ -1,15 +1,6 @@
-// import HomePage from "../front/pages/HomePage";
-// import AboutPage from "../front/pages/AboutPage";
-// import NotFoundPage from "../front/pages/NotFoundPage";
-// import ServicesPage from "../front/pages/ServicesPage";
-// import Product from "../front/pages/Product";
-// import StaticPage from "../front/pages/StaticPage";
-// import ContactPage from "../front/pages/ContactPage";
 import components from '../front/pages/index.js';
-const { HomePage, AboutPage, NotFoundPage, ServicesPage, Product, StaticPage, ContactPage } = components;
 const path = window.location.pathname.replace(/^\//, "");
 console.log(components);
-
 
 const seo = [
   { route: "/product6", url: "new-page", file:"product"},
@@ -34,13 +25,13 @@ seo.forEach((item) => {
 
 
 const routes = [
-  { path: "/", element: <HomePage /> },
-  { path: "/services", element: <ServicesPage /> },
-  { path: "/about", element: <AboutPage /> },
-  { path: "/contact", element: <ContactPage /> },
-  { path: static_page_url ? `${static_page_url}` : "/static/:id", element: <StaticPage /> },
-  { path: product_url ? `${product_url}` : "/product/:id", element: <Product /> }, 
-  { path: "*", element: <NotFoundPage /> },
+  { path: "/", element: <components.HomePage /> },
+  { path: "/services", element: <components.ServicesPage /> },
+  { path: "/about", element: <components.AboutPage /> },
+  { path: "/contact", element: <components.ContactPage /> },
+  { path: static_page_url ? `${static_page_url}` : "/static/:id", element: <components.StaticPage /> },
+  { path: product_url ? `${product_url}` : "/product/:id", element: <components.Product /> }, 
+  { path: "*", element: <components.NotFoundPage /> },
 ];
 
 
