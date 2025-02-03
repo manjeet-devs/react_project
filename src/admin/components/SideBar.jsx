@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'; // Optional if using React Router
 
 const SideBar = () => {
   const menuItems = [
-    { name: 'Dashboard', icon: '🏠', path: '/admin' },
-    { name: 'Products', icon: '📦', path: '/admin/products' },
-    { name: 'Orders', icon: '🛒', path: '/admin/orders' },
-    { name: 'Users', icon: '👤', path: '/admin/user' },
-    { name: 'Settings', icon: '⚙️', path: '/admin/settings' },
+    { name: 'Dashboard', icon: ' 🏠', path: '/admin' },
+    { name: 'Products', icon: ' 📦', path: '/admin/products' },
+    { name: 'Orders', icon: ' 🛒', path: '/admin/orders' },
+    { name: 'Users', icon: ' 👤', path: '/admin/user' },
+    { name: 'Static page', icon: '⚙️', path: '/admin/staticpage' },
+    { name: 'Settings', icon: ' ⚙️', path: '/admin/settings' },
   ];
 
   return (
