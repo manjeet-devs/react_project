@@ -8,8 +8,8 @@ const seo = [
   { route: "/static/3", url: "static2", file:"static"},
   { route: "/static/2", url: "static1", file:"static"},
   { route: "/category/2", url: "category121", file:"category"},
-  { route: "/category/2", url: "category122", file:"category"},
-  { route: "/category/2", url: "category123", file:"category"},
+  { route: "/category/5", url: "category122", file:"category"},
+  { route: "/category/3", url: "category123", file:"category"},
 ];
 
 let product_url = null;
