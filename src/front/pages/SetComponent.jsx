@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from "./Product"
+import Product from "./ProductPage"
 import NotFound from "./NotFoundPage";
 import StaticPage from "./StaticPage"
 
