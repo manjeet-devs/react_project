@@ -1,6 +1,5 @@
 import components from '../front/pages/index.js';
 const path = window.location.pathname.replace(/^\//, "");
-console.log(components);
 
 const seo = [
   { route: "/product/6", url: "new-page1", file:"product"},
@@ -39,7 +38,7 @@ const routes = [
   { path: static_page_url ? `${static_page_url}` : "/static/:id", element: <components.StaticPage /> },
   { path: product_url ? `${product_url}` : "/product/:id", element: <components.Product /> }, 
   { path: category_url ? `${category_url}` : "/category/:id", element: <components.Product /> }, 
-  { path: "*", element: <components.NotFoundPage /> },
+  { path: "/:path", element: <components.SetComponent /> }
 ];
 
 
