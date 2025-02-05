@@ -36,8 +36,8 @@ const routes = [
   { path: "/about", element: <components.AboutPage /> },
   { path: "/contact", element: <components.ContactPage /> },
   { path: static_page_url ? `${static_page_url}` : "/static/:id", element: <components.StaticPage /> },
-  { path: product_url ? `${product_url}` : "/product/:id", element: <components.Product /> }, 
-  { path: category_url ? `${category_url}` : "/category/:id", element: <components.Product /> }, 
+  { path: product_url ? `${product_url}` : "/product/:id", element: <components.ProductPage /> }, 
+  { path: category_url ? `${category_url}` : "/category/:id", element: <components.CategoryPage /> }, 
   { path: "/:path", element: <components.SetComponent /> }
 ];
 
