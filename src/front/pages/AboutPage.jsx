@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   return (
@@ -27,6 +28,8 @@ const AboutPage = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-8">Meet Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <Link to="/product/new-page1" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 
@@ -39,6 +42,9 @@ const AboutPage = () => {
                 John is the visionary behind our company. He oversees the strategy and direction of the brand.
               </p>
             </div>
+            </Link>
+
+            <Link to="/product/new-page2" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 
@@ -51,6 +57,9 @@ const AboutPage = () => {
                 Jane is responsible for all things marketing, ensuring our message reaches customers worldwide.
               </p>
             </div>
+            </Link>
+
+            <Link to="/category/category123" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 
@@ -63,6 +72,8 @@ const AboutPage = () => {
                 Sarah leads the team in developing innovative products that exceed customer expectations.
               </p>
             </div>
+            </Link>
+
           </div>
         </div>
       </section>

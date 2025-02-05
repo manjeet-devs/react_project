@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // State for the banner slider
@@ -78,14 +79,16 @@ const HomePage = () => {
           <h2 className="text-3xl font-semibold mb-8">Featured Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
-              <div key={product.id} className="bg-white p-4 rounded-lg shadow-lg">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
-                <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.price}</p>
-                <button className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
-                  Add to Cart
-                </button>
-              </div>
+              <Link to={`/static/static${product.id}`} className="hover:text-gray-400">
+                <div key={product.id} className="bg-white p-4 rounded-lg shadow-lg">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
+                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                  <p className="text-gray-600 mb-4">{product.price}</p>
+                  <button className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500">
+                    Add to Cart
+                  </button>
+                </div>
+               </Link>
             ))}
           </div>
         </div>
