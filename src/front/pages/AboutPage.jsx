@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, incrementByAmount } from '../features/counterSlice';
 
 const AboutPage = () => {
+    const count = useSelector((state) => state.counter.value);
+  
+    // Dispatch actions
+    const dispatch = useDispatch();
   return (
     <div className="bg-gray-100">
 
@@ -77,6 +83,41 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+
+            <div className="flex flex-col items-center justify-center bg-gray-100">
+            <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center space-y-4">
+              <h2 className="text-2xl font-semibold text-gray-700">Counter</h2>
+              
+              <div className="flex items-center space-x-4">
+                <button
+                  className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                  aria-label="Decrement value"
+                  onClick={() => dispatch(decrement())}
+                >
+                  -
+                </button>
+                
+                <span className="text-3xl font-bold text-gray-800">{count}</span>
+      
+                <button
+                  className="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
+                  aria-label="Increment value"
+                  onClick={() => dispatch(increment())}
+                >
+                  +
+                </button>
+              </div>
+      
+              <button
+                className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                aria-label="Increment by 5"
+                onClick={() => dispatch(incrementByAmount(5))}
+              >
+                Increment by 5
+              </button>
+            </div>
+          </div>
+
     </div>
   );
 };
