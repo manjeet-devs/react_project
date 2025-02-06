@@ -22,7 +22,7 @@ const ServicesPage = () => {
           <h2 className="text-3xl font-semibold mb-8">Our Offerings</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <Link to="/new-page1" className="hover:text-gray-400">
+            <Link to="/product/new-page1" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 

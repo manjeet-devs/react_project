@@ -28,7 +28,6 @@ seo.forEach((item) => {
   }
 });
 
-console.log("reached...");
 
 const routes = [
   { path: "/", element: <components.HomePage /> },

@@ -44,7 +44,7 @@ const AboutPage = () => {
             </div>
             </Link>
 
-            <Link to="/product/new-page2" className="hover:text-gray-400">
+            <Link to="/new-page21111" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 
@@ -59,7 +59,7 @@ const AboutPage = () => {
             </div>
             </Link>
 
-            <Link to="/category/category123" className="hover:text-gray-400">
+            <Link to="/category123" className="hover:text-gray-400">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img 
                 src="https://via.placeholder.com/150" 
