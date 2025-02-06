@@ -5,7 +5,7 @@ import StaticPage from "./StaticPage"
 import CategoryPage from "./CategoryPage"
 import { useParams } from "react-router-dom";
 
-const SetComponent = (getpage) => {
+const SetComponent = () => {
   const { path } = useParams();  
   const seo = [
     { url: "new-page1", file:"product"},
