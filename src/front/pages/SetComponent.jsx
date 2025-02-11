@@ -8,28 +8,27 @@ import { useParams } from "react-router-dom";
 const SetComponent = () => {
   const { path } = useParams();  
   const seo = [
-    { url: "new-page1", file:"product"},
-    { url: "new-page2", file:"product"},
-    { url: "new-page3", file:"product"},
-    { url: "static2", file:"static"},
-    { url: "static1", file:"static"},
-    { url: "category121", file:"category"},
-    { url: "category122", file:"category"},
-    { url: "category123", file:"category"},
+    { url: "new-page1", route_path:"product"},
+    { url: "new-page2", route_path:"product"},
+    { url: "new-page3", route_path:"product"},
+    { url: "static2", route_path:"static"},
+    { url: "static1", route_path:"static"},
+    { url: "category121", route_path:"category"},
+    { url: "category122", route_path:"category"},
+    { url: "category123", route_path:"category"},
   ];
   let isSeoUrl = null;
   seo.forEach((item) => {
     if (item.url === path) {
-      if(item.file == "product"){
-        isSeoUrl = item.file;
-      }else if(item.file == 'static'){
-        isSeoUrl = item.file;
-      }else if(item.file == 'category'){
-        isSeoUrl = item.file;
+      if(item.route_path == "product"){
+        isSeoUrl = item.route_path;
+      }else if(item.route_path == 'static'){
+        isSeoUrl = item.route_path;
+      }else if(item.route_path == 'category'){
+        isSeoUrl = item.route_path;
       }
     }
   });
-     console.log(path,isSeoUrl,"manjeet");
      
 
   return (
