@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AdminHeader from "./components/AdminHeader";
 import Sidebar from './components/SideBar';
 import routes from "../routes/adminRoute";
+import Navbar from "./components/Navbar";
 import './style/styleSheet.css';
 
 
@@ -10,6 +11,7 @@ import './style/styleSheet.css';
 function AdminApp(){
     return (
         <Router>
+            <Navbar />
             <AdminHeader />
                 <div className="min-h-screen flex flex-col bg-gray-100">
                     <div className="flex flex-1">

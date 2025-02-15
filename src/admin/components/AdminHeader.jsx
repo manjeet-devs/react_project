@@ -9,7 +9,7 @@ const AdminHeader = () => {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
-    <header className="w-full bg-green-900 text-white p-4 shadow-md flex justify-between items-center">
+    <header className="w-full bg-green-900 text-white p-4 shadow-md flex justify-between items-center ">
       {/* Left: Logo */}
       <div className="flex items-center space-x-3">
         <img
