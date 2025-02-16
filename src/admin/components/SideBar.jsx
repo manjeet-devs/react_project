@@ -1,41 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Optional if using React Router
+import { SiShopware } from 'react-icons/si';
+import { MdOutlineCancel } from 'react-icons/md';
+import { links } from '../dammyData';
+import {  NavLink } from "react-router-dom";
+
 
 const SideBar = () => {
-  const menuItems = [
-    { name: 'Dashboard', icon: ' 🏠', path: '/admin' },
-    { name: 'Products', icon: ' 📦', path: '/admin/products' },
-    { name: 'Orders', icon: ' 🛒', path: '/admin/orders' },
-    { name: 'Users', icon: ' 👤', path: '/admin/user' },
-    { name: 'Static page', icon: '⚙️', path: '/admin/staticpage' },
-    { name: 'Settings', icon: ' ⚙️', path: '/admin/settings' },
-  ];
+  const handleCloseSideBar = () => {
+    if (activeMenu !== undefined && screenSize <= 900) {
+      setActiveMenu(false);
+    }
+  };
+  const initialState = {
+    chat: false,
+    cart: false,
+    userProfile: false,
+    notification: false,
+  };
+  const [screenSize, setScreenSize] = useState(undefined);
+  const [currentColor, setCurrentColor] = useState('#03C9D7');
+  const [currentMode, setCurrentMode] = useState('Light');
+  const [themeSettings, setThemeSettings] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [isClicked, setIsClicked] = useState(initialState);
+  console.log("check rerender...");
+ 
+
+  const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
+  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700  dark:hover:text-black hover:bg-light-gray m-2';
 
   return (
-    <aside className="w-64 bg-gray-800 text-white h-screen shadow-lg">
-      <div className="p-4 text-2xl font-bold text-center border-b border-gray-700">
-        Admin Panel
-      </div>
-      <nav className="mt-4">
-        <ul className="space-y-2">
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center space-x-3 px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg ${
-                    isActive ? 'bg-gray-700' : ''
-                  }`
-                }
+    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
+      {activeMenu && (
+        <>
+          <div className="flex justify-between items-center">
+           
+            {/* <TooltipComponent content="Menu here" position="BottomCenter"> */}
+              <button
+                type="button"
+                onClick={() => setActiveMenu(!activeMenu)}
+                style={{ color: currentColor }}
+                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
               >
-                <span className="text-lg">{item.icon}</span>
-                <span>{item.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </aside>
+                <MdOutlineCancel />
+              </button>
+            {/* </TooltipComponent> */}
+          </div>
+          <div className="mt-10 ">
+            {links.map((item) => (
+              <div key={item.title}>
+                <p className="  m-3 mt-4 uppercase">
+                  {item.title}
+                </p>
+                {item.links.map((link) => (
+                  <NavLink
+                    to={`/${link.name}`}
+                    key={link.name}
+                    onClick={handleCloseSideBar}
+                    style={({ isActive }) => ({
+                      backgroundColor: isActive ? currentColor : '',
+                    })}
+                    className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                  >
+                    {link.icon}
+                    <span className="capitalize ">{link.name}</span>
+                  </NavLink>
+                ))}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

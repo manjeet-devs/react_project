@@ -12,7 +12,7 @@ function AdminApp(){
     return (
         <Router>
             <Navbar />
-            <AdminHeader />
+            {/* <AdminHeader /> */}
                 <div className="min-h-screen flex flex-col bg-gray-100">
                     <div className="flex flex-1">
                         <Sidebar />
