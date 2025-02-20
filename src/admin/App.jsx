@@ -28,7 +28,7 @@ function AdminApp(){
         <Router>
             <div className={`flex h-screen ${darkMode ? "dark" : ""}`}>
                 <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-                    <div className="flex flex-col flex-1 overflow-hidden">
+                    <div className="flex flex-col flex-1 ">
                         <Navbar
                         sidebarOpen={sidebarOpen}
                         setSidebarOpen={setSidebarOpen}
