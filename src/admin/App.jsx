@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
-import AdminHeader from "./components/AdminHeader";
 import Sidebar from './components/SideBar';
 import routes from "../routes/adminRoute";
 import Navbar from "./components/Navbar";
