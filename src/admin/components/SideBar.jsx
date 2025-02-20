@@ -67,11 +67,11 @@ export default function SideBar({ open, setOpen }) {
             <div className="ml-6 space-y-1">
               <NavItem to="/admin/products" icon={<Boxes className="mr-3 h-5 w-5" />} text="All Products" active={location.pathname === "/admin/products"} />
               <NavItem to="/admin/prodlist" icon={<List className="mr-3 h-5 w-5" />} text="Product List" active={location.pathname === "/admin/prodlist"} />
-              <NavItem to="/admin/extensions" icon={<Puzzle className="mr-3 h-5 w-5" />} text="Extensions" active={location.pathname === "/admin/extensions"} />
+              
             </div>
           )}
         </div>
-      </nav>
+        <NavItem to="/admin/extensions" icon={<Puzzle className="mr-3 h-5 w-5" />} text="Extensions" active={location.pathname === "/admin/extensions"} />      </nav>
 
       {/* Upgrade Button at Bottom */}
       <button className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 mt-auto">
