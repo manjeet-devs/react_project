@@ -9,26 +9,33 @@ export default function SideBar({ open, setOpen }) {
     <aside
       className={`${
         open ? "translate-x-0" : "-translate-x-full"
-      } fixed inset-y-0 left-0 z-50 w-64 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-6 transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0`}
+      } fixed inset-y-0 left-0 z-50 w-64 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-6 transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 flex flex-col`}
     >
+      {/* Close Button */}
       <button
         className="lg:hidden absolute top-4 right-4 text-gray-600 dark:text-gray-300"
         onClick={() => setOpen(false)}
       >
         <X className="h-6 w-6" />
       </button>
+
+      {/* Logo */}
       <div className="flex items-center mb-8">
         <div className="w-8 h-8 bg-purple-600 rounded-full mr-3"></div>
         <h1 className="text-xl font-bold">Dashy</h1>
       </div>
-      <nav className="space-y-2">
+
+      {/* Navigation - Flex Grow for Pushing Button to Bottom */}
+      <nav className="space-y-2 flex-1">
         <NavItem to="/admin" icon={<LayoutGrid className="mr-3 h-5 w-5" />} text="Dashboard" active={location.pathname === "/admin"} />
         <NavItem to="/admin/settings" icon={<Settings className="mr-3 h-5 w-5" />} text="Settings" active={location.pathname === "/admin/settings"} />
         <NavItem to="/admin/analytics" icon={<BarChart2 className="mr-3 h-5 w-5" />} text="Analytics" active={location.pathname === "/admin/analytics"} />
         <NavItem to="/admin/updates" icon={<RefreshCcw className="mr-3 h-5 w-5" />} text="Updates" badge="14" active={location.pathname === "/admin/updates"} />
         <NavItem to="/admin/products" icon={<Package className="mr-3 h-5 w-5" />} text="Products" badge="14+" active={location.pathname === "/admin/products"} />
       </nav>
-      <button className="w-full mt-auto bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
+
+      {/* Upgrade Button at Bottom */}
+      <button className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 mt-auto">
         Upgrade Plan
       </button>
     </aside>
