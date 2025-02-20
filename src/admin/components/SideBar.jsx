@@ -32,6 +32,7 @@ export default function SideBar({ open, setOpen }) {
         <NavItem to="/admin/analytics" icon={<BarChart2 className="mr-3 h-5 w-5" />} text="Analytics" active={location.pathname === "/admin/analytics"} />
         <NavItem to="/admin/updates" icon={<RefreshCcw className="mr-3 h-5 w-5" />} text="Updates" badge="14" active={location.pathname === "/admin/updates"} />
         <NavItem to="/admin/products" icon={<Package className="mr-3 h-5 w-5" />} text="Products" badge="14+" active={location.pathname === "/admin/products"} />
+        <NavItem to="/admin/prodlist" icon={<Package className="mr-3 h-5 w-5" />} text="Products list2" badge="14+" active={location.pathname === "/admin/prodlist"} />
       </nav>
 
       {/* Upgrade Button at Bottom */}
