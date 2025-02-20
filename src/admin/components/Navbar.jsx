@@ -1,4 +1,5 @@
 import { Search, Moon, Sun, Bell, Menu } from "lucide-react"
+import React, { useState } from 'react';
 
 export default function Navbar({ sidebarOpen, setSidebarOpen, darkMode, setDarkMode }) {
   return (

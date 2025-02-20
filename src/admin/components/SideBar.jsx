@@ -1,4 +1,5 @@
 import { LayoutGrid, Settings, BarChart2, RefreshCcw, Package, X } from "lucide-react"
+import React, { useState } from 'react';
 
 export default function SideBar({ open, setOpen }) {
   return (

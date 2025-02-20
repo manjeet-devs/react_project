@@ -1,11 +1,31 @@
 import { Users, DollarSign, TrendingUp, Download } from "lucide-react"
-import { useState, useEffect } from "react"
-// import TransactionsTable from "./TransactionsTable"
+import React, { useState } from 'react';
+import TransactionsTable from "./TransactionsTable"
 
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      aearwdfs Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit modi nesciunt laudantium quae fugit deleniti vitae, aliquid ipsam sint. Asperiores illo nihil rerum vel laboriosam quaerat molestias odio ab quos.
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h2>
+        <button className="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200 flex items-center">
+          <span className="mr-2">+</span> New Invoice
+        </button>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <MetricCard title="Subscriptions" value="1240" change="+10%" icon={<Users className="h-6 w-6" />} />
+        <MetricCard title="Revenue" value="$35,231.81" change="+22%" icon={<DollarSign className="h-6 w-6" />} />
+        <MetricCard title="MRR" value="$5,632" change="+14%" icon={<TrendingUp className="h-6 w-6" />} />
+      </div>
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Last Transactions</h3>
+          <button className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center">
+            <Download className="h-5 w-5 mr-2" />
+            Export
+          </button>
+        </div>
+        <TransactionsTable />
+      </div>
     </div>
   )
 }
