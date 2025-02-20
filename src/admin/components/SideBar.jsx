@@ -1,79 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Optional if using React Router
-import { SiShopware } from 'react-icons/si';
-import { MdOutlineCancel } from 'react-icons/md';
-import { links } from '../dammyData';
-import {  NavLink } from "react-router-dom";
+import { LayoutGrid, Settings, BarChart2, RefreshCcw, Package, X } from "lucide-react"
 
-
-const SideBar = () => {
-  const handleCloseSideBar = () => {
-    if (activeMenu !== undefined && screenSize <= 900) {
-      setActiveMenu(false);
-    }
-  };
-  const initialState = {
-    chat: false,
-    cart: false,
-    userProfile: false,
-    notification: false,
-  };
-  const [screenSize, setScreenSize] = useState(undefined);
-  const [currentColor, setCurrentColor] = useState('#03C9D7');
-  const [currentMode, setCurrentMode] = useState('Light');
-  const [themeSettings, setThemeSettings] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(true);
-  const [isClicked, setIsClicked] = useState(initialState);
-  console.log("check rerender...");
- 
-
-  const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
-  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700  dark:hover:text-black hover:bg-light-gray m-2';
-
+export default function SideBar({ open, setOpen }) {
   return (
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
-      {activeMenu && (
-        <>
-          <div className="flex justify-between items-center">
-           
-            {/* <TooltipComponent content="Menu here" position="BottomCenter"> */}
-              <button
-                type="button"
-                onClick={() => setActiveMenu(!activeMenu)}
-                style={{ color: currentColor }}
-                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
-              >
-                <MdOutlineCancel />
-              </button>
-            {/* </TooltipComponent> */}
-          </div>
-          <div className="mt-10 ">
-            {links.map((item) => (
-              <div key={item.title}>
-                <p className="  m-3 mt-4 uppercase">
-                  {item.title}
-                </p>
-                {item.links.map((link) => (
-                  <NavLink
-                    to={`/${link.name}`}
-                    key={link.name}
-                    onClick={handleCloseSideBar}
-                    style={({ isActive }) => ({
-                      backgroundColor: isActive ? currentColor : '',
-                    })}
-                    className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                  >
-                    {link.icon}
-                    <span className="capitalize ">{link.name}</span>
-                  </NavLink>
-                ))}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
+    <aside
+      className={`${
+        open ? "translate-x-0" : "-translate-x-full"
+      } fixed inset-y-0 left-0 z-50 w-64 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-6 transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0`}
+    >
+      <button
+        className="lg:hidden absolute top-4 right-4 text-gray-600 dark:text-gray-300"
+        onClick={() => setOpen(false)}
+      >
+        <X className="h-6 w-6" />
+      </button>
+      <div className="flex items-center mb-8">
+        <div className="w-8 h-8 bg-purple-600 rounded-full mr-3"></div>
+        <h1 className="text-xl font-bold">Dashy</h1>
+      </div>
+      <nav className="space-y-2">
+        <NavItem icon={<LayoutGrid className="mr-3 h-5 w-5" />} text="Dashboard" active />
+        <NavItem icon={<Settings className="mr-3 h-5 w-5" />} text="Settings" />
+        <NavItem icon={<BarChart2 className="mr-3 h-5 w-5" />} text="Analytics" />
+        <NavItem icon={<RefreshCcw className="mr-3 h-5 w-5" />} text="Updates" badge="14" />
+        <NavItem icon={<Package className="mr-3 h-5 w-5" />} text="Products" badge="14+" />
+      </nav>
+      <button className="w-full mt-auto bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
+        Upgrade Plan
+      </button>
+    </aside>
+  )
+}
 
-export default SideBar;
+function NavItem({ icon, text, active = false, badge }) {
+  return (
+    <a
+      href="#"
+      className={`flex items-center p-2 rounded-lg ${active ? "bg-purple-100 dark:bg-gray-700 text-purple-600 dark:text-purple-400" : "text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"}`}
+    >
+      {icon}
+      {text}
+      {badge && (
+        <span className="ml-auto bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full">{badge}</span>
+      )}
+    </a>
+  )
+}
+
