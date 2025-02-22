@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 export default function Navbar({ sidebarOpen, setSidebarOpen, darkMode, setDarkMode }) {
   return (
     <header className="bg-white dark:bg-gray-800 p-4 flex items-center justify-between shadow-md">
-      <button className="lg:hidden text-gray-600 dark:text-gray-300 mr-4" onClick={() => setSidebarOpen(true)}>
+      <span className="lg:hidden text-gray-600 dark:text-gray-300 mr-4" onClick={() => setSidebarOpen(true)}>
         <Menu className="h-6 w-6" />
-      </button>
+      </span>
       <div className="flex-1 max-w-xl">
         <div className="relative">
           <input
